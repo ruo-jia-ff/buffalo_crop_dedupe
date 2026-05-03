@@ -1,0 +1,4 @@
+image_path:  sample_image\0_Parade_Parade_0_178.jpg
+# image_path: D:\FaceFirst-Internal-Tester_2024-07-03\FaceFirst-Internal-Tester\TestData\DetectTest\Report_Custom\020kiwi\faces\00047-0.png
+detector: "buffalo"   # buffalo or retinaface
+device: "cuda"        # or "cpu"
