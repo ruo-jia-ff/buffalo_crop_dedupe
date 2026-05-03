@@ -6,8 +6,11 @@ import os
 import zipfile
 import shutil
 
+from dotenv import load_dotenv
+load_dotenv()
+
 target_container = r"buffalo-crop"
-output_dir = r"/data/buffalo_crop_dedupe"
+output_dir = os.getenv("DOWNLOAD_FOLDER")
 
 MAX_DOWNLOAD_ATTEMPTS = 3  # 1 initial + 2 retries on corruption
 
@@ -78,6 +81,7 @@ def main():
     blob_user.establish_blob_container(target_container, list_blobs=False)
     print(f"Listing blobs in '{target_container}'...")
     blobs = blob_user.list_blobs_in_container(verbose=False, return_blobs=True)
+    blobs = blobs[:3]
     print(f"Found {len(blobs)} blobs.")
 
     # Skip blobs whose unzip directory already exists
